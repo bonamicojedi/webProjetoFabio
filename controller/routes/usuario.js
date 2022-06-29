@@ -1,4 +1,5 @@
-const { nextTick } = require("process");
+const usuarioBD = require('../../model/repositories/usuarioBD.js');
+const seguranca = require('../../model/components/seguranca.js');
 
 module.exports = function (app) {
     app.get("/login", function (req, res) {
@@ -79,7 +80,7 @@ module.exports = function (app) {
         try {
             var id = req.params.id;
             const docs = await usuarioBanco.getUsuarioId(id);
-            res.render('usuario/EditUsuario', { mensagem: '', usuario});
+            res.render('usuario/EditUsuario', { mensagem: '', usuario });
         } catch (err) {
             next(err);
         }
